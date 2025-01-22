@@ -3,9 +3,9 @@ var productPrice = document.getElementById("productPrice");
 var productCategory = document.getElementById("productCategory");
 var productDescription = document.getElementById("productDescription");
 var productImage = document.getElementById("productImage");
-var searchInput=document.getElementById("searchInput");
-var btnAdd= document.getElementById("btnAdd");
-var btnUpdate=document.getElementById("btnUpdate");
+var searchInput = document.getElementById("searchInput");
+var btnAdd = document.getElementById("btnAdd");
+var btnUpdate = document.getElementById("btnUpdate");
 
 var products = [];
 
@@ -14,13 +14,13 @@ if (localStorage.getItem("product")) {
   displayProduct();
 }
 
-function addProduct() {  
+function addProduct() {
   var product = {
     pName: productName.value,
     price: productPrice.value,
     category: productCategory.value,
     description: productDescription.value,
-    imgSrc:`images/${productImage.files[0]?.name}`,  // ? is optional chaning
+    imgSrc: `images/${productImage.files[0]?.name}`,  // ? is optional chaning
   };
   // console.log(product);
   products.push(product);
@@ -117,7 +117,7 @@ function searchForproduct() {
   </div>`;
     }
   }
-  document.getElementById("rowElements").innerHTML=cartona;    
+  document.getElementById("rowElements").innerHTML = cartona;
 }
 
 
@@ -137,15 +137,15 @@ function searchForproduct() {
 
 6- $ -> End
 
-7- \d -> digit
+7- \d -> digit === [0-9]
 
-8- \D -> not digit
+8- \D -> not digit ==== ay 7aga 8er [0-9]
 
-9- \w -> word character (alphanumeric plus "_")
+9- \w -> word character (alphanumeric plus "_") ===== [0-9a-zA-z_] 
 
-10- \W -> not word character
+10- \W -> not word character ======= ay 7aga 8er [0-9a-zA-z_]
 
-11- \s -> whitespace character
+11- \s -> whitespace character  ==== space
 
 12- \S -> not whitespace character
 
@@ -167,11 +167,25 @@ function searchForproduct() {
 
 21- + -> 1 or more "ex" -> a+ keda momkn yktebha mara aw aktar
 
-## regex for egyptian number " ^(002|\+2)?01[0125][0-9]{8}$ "
+22- . -> ay 7aga fel denya
 
+33- | -> OR "ex" (yahoo|gmail)
 
-*/ 
+34-  [10-50] -> m3naha 1 aw mn 0--5 aw 0
 
+## regex for egyptian number ==== " ^(002|\+2)?01[0125][0-9]{8}$ "
 
-//var x = /^(002){0,1}01[0125]{3}[0-9]{8}$/;
-// regex for egypt phone number
+## regex for IP address ==== ^([0-9]\.|[0-9][0-9]\.|((1[0-9][0-9])|200|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[0-9][0-9]|((1[0-9][0-9])|200|2[0-4][0-9]|25[0-5]))$
+
+*/
+
+function validateProductName() {
+  var regex = /^[A-Z][a-z]{2,8}$/;
+  var myStr = productName.value;
+  if (regex.test(myStr) == true) {
+    console.log("match")
+  }
+  else {
+    console.log("not match");
+  }
+}
